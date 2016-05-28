@@ -10,6 +10,10 @@ Things you may want to cover:
 * System dependencies
 
 * Configuration
+  In order to get the application to run, you need to set the following environment variables:
+  -$STATELESS_DEV_SECRET_KEY_BASE
+  -$STATELESS_TEST_SECRET_KEY_BASE
+  -$STATELESS_PRD_SECRET_KEY_BASE
 
 * Database creation
 
