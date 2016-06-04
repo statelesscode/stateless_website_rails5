@@ -1,10 +1,22 @@
 require 'test_helper'
 
 class ArticlesControllerTest < ActionDispatch::IntegrationTest
+  def setup
+    @article = articles(:one)
+  end
+
   test 'should get index' do
     get articles_url
     assert_response :success
     assert_select 'h1', 'Articles#index'
+  end
+
+  test 'should get show' do
+    @article.save!
+    get article_url(@article)
+    assert_response :success
+    assert_select 'h1', @article.title
+    assert_select 'p', @article.text
   end
 
   test 'should get new' do
