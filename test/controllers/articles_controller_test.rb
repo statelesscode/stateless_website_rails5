@@ -24,4 +24,11 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_equal 'Article was successfully created.', flash[:notice]
   end
 
+  test 'should handle bad create params properly' do
+    assert_no_difference('Article.count') do
+      post articles_url, params: {article: { text: "I'm asleep: #{'z'*1000}"}}
+    end
+    assert_select 'li', 'Title can\'t be blank'    
+  end
+
 end
