@@ -28,6 +28,14 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_select 'form p', 3    
   end
 
+  test 'should get edit' do
+    get edit_article_url(@article)
+    assert_response :success
+    assert_select 'h1', 'Edit Article'
+    assert_select 'form'
+    assert_select 'form p', 3    
+  end  
+
   test 'should create article' do
     assert_difference('Article.count') do
       post articles_url, params: {article: {title: 'I am an article', 
@@ -42,6 +50,17 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
       post articles_url, params: {article: { text: "I'm asleep: #{'z'*1000}"}}
     end
     assert_select 'li', 'Title can\'t be blank'    
+  end
+
+  test 'should update article' do
+    patch article_url(@article), params: {id: @article.id, article: {title: 'I am updated'}}
+    assert_redirected_to article_path(@article)
+    assert_equal 'Article was successfully updated.', flash[:notice]
+  end
+
+  test 'should handle bad update params properly' do
+    patch article_url(@article), params: {id: @article.id, article: { title: 'qq'}}
+    assert_select 'li', 'Title is too short (minimum is 3 characters)'    
   end
 
 end

@@ -11,6 +11,10 @@ class ArticlesController < ApplicationController
   def new
   end
 
+  def edit
+    @article = Article.find(params[:id])
+  end
+
   def create
     @article = Article.new(article_params)
     if @article.save    
@@ -21,6 +25,18 @@ class ArticlesController < ApplicationController
       render :new
     end
   end
+
+  def update
+    @article = Article.find(params[:id])
+    if @article.update(article_params)    
+      flash[:notice] = 'Article was successfully updated.'
+      redirect_to @article
+    else
+      flash[:alert] = 'Article was not updated due to errors.'
+      render :edit
+    end
+  end
+
 
 private
   def article_params
