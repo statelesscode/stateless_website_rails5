@@ -8,7 +8,8 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
   test 'should get index' do
     get articles_url
     assert_response :success
-    assert_select 'h1', 'Articles#index'
+    assert_select 'h1', 'Stateless Code Articles'
+    assert_select 'tr', Article.all.count + 1
   end
 
   test 'should get show' do
