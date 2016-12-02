@@ -63,4 +63,12 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_select 'li', 'Title is too short (minimum is 3 characters)'    
   end
 
+  test 'should destroy article' do
+    assert_difference('Article.count', -1) do
+      delete article_path(Article.last), params: {id: Article.last.id}
+    end
+    assert_redirected_to articles_path
+    assert_equal 'Article was successfully destroyed.', flash[:notice]
+  end
+
 end
