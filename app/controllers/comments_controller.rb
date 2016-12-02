@@ -1,13 +1,9 @@
 class CommentsController < ApplicationController
   before_action :find_article
   def create
-    if @article.comments.create(comment_params)
-      flash[:notice] = 'Comment was successfully created.'
-      redirect_to @article      
-    else
-      flash[:alert] = 'Comment was not created due to errors.'
-      render 'articles/show'
-    end
+    @comment = @article.comments.create(comment_params)
+    flash[:notice] = 'Comment was successfully created.'
+    redirect_to @article      
   end
 
   def destroy
