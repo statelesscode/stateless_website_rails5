@@ -36,6 +36,9 @@ gem 'font-awesome-sass'
 gem 'devise', '~> 4.2.0'
 gem 'omniauth', '~> 1.3.1'
 
+# Paperclip for avatar attachment
+gem 'paperclip', '~> 5.1.0'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
