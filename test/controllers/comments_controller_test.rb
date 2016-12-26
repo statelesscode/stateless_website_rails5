@@ -1,15 +1,20 @@
 require 'test_helper'
 
 class CommentsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+  include SignInHelper
+
   def setup
     @article = articles(:one)
-    @auth = {'Authorization' => "Basic #{Base64.strict_encode64('stateless:code')}"}
+    @user = users(:public)
+
   end
 
   test 'should create comment' do
     assert_difference('Comment.count') do
-      post article_comments_path(@article), params: {comment: {commenter: 'Krugman', 
-        body: "Break a window!", article: @article}}, headers: @auth
+      sign_in users(:krugman)
+      post article_comments_path(@article), params: {comment:  
+        {body: "Break a window!", article: @article}}
     end
     assert_redirected_to article_path(@article)
     assert_equal 'Comment was successfully created.', flash[:notice]
@@ -17,7 +22,8 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should destroy comment' do
     assert_difference('Comment.count', -1) do
-      delete article_comment_path(@article, @article.comments.last), params: {id: @article.comments.last}, headers: @auth
+      sign_in @user
+      delete article_comment_path(@article, @article.comments.last), params: {id: @article.comments.last}
     end
     assert_redirected_to article_path(@article)
     assert_equal 'Comment was successfully destroyed.', flash[:notice]
@@ -25,7 +31,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should not delete destroy if unauthorized' do
     delete article_comment_path(@article, @article.comments.last), params: {id: @article.comments.last}
-    assert_response :unauthorized
+    assert_redirected_to new_user_session_path
   end
 
 end

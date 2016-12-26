@@ -4,20 +4,22 @@ class ArticleTest < ActiveSupport::TestCase
   def setup
     @article = articles(:one)
   end
-  test 'should be valid with title and text' do
+  test 'should be valid with title and body' do
+    @article.validate
+    puts @article.errors.full_messages
     assert articles(:one).save
   end
 
   test 'should be invalid without title' do
-    article = Article.new(text: 'No title')
+    article = Article.new(body: 'No title')
     assert_not article.save
     assert_includes article.errors.full_messages, "Title can't be blank"
   end
 
-  test 'should be invalid without text' do
+  test 'should be invalid without body' do
     article = Article.new(title: 'No body')
     assert_not article.save
-    assert_includes article.errors.full_messages, "Text can't be blank"
+    assert_includes article.errors.full_messages, "Body can't be blank"
   end
 
   test 'title should have a minimum length of 3' do

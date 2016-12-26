@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  http_basic_authenticate_with name: 'stateless', password: 'code', except: [:index, :show]
+  before_action :authenticate_user! 
   before_action :find_article, only: [:show, :edit, :update, :destroy]
 
   def index 
@@ -18,6 +18,7 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
+    @article.author = current_user
     if @article.save    
       flash[:notice] = 'Article was successfully created.'
       redirect_to @article
@@ -45,7 +46,7 @@ class ArticlesController < ApplicationController
 
 private
   def article_params
-    params.require(:article).permit(:title, :text)
+    params.require(:article).permit(:title, :body)
   end
 
   def find_article

@@ -1,7 +1,8 @@
 class Comment < ApplicationRecord
-  belongs_to :article
+  belongs_to :commentable, polymorphic: :true
+  has_many :comments, as: :commentable
+  belongs_to :commenter, class_name: 'User', foreign_key: :commenter_user_id 
 
-  validates :commenter, presence: true, length: {minimum: 1, maximum: 255}
   validates :body, presence: true
 
 end

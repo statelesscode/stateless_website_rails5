@@ -10,23 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161210223628) do
+ActiveRecord::Schema.define(version: 20161212035716) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "title"
-    t.text     "text"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "author_user_id"
+    t.string   "topic"
+    t.string   "status"
+    t.text     "body"
+    t.string   "description",           limit: 150
+    t.text     "keywords"
+    t.string   "minified_link"
+    t.datetime "published_at"
+    t.datetime "post_last_modified_at"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.index ["author_user_id"], name: "index_articles_on_author_user_id"
+    t.index ["description"], name: "index_articles_on_description"
+    t.index ["status"], name: "index_articles_on_status"
     t.index ["title"], name: "index_articles_on_title"
+    t.index ["topic"], name: "index_articles_on_topic"
   end
 
   create_table "comments", force: :cascade do |t|
-    t.string   "commenter"
+    t.integer  "commenter_user_id"
     t.text     "body"
-    t.integer  "article_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["article_id"], name: "index_comments_on_article_id"
+    t.string   "commentable_type"
+    t.integer  "commentable_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
+    t.index ["commenter_user_id"], name: "index_comments_on_commenter_user_id"
   end
 
   create_table "users", force: :cascade do |t|

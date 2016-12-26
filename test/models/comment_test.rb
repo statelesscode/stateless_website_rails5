@@ -11,36 +11,26 @@ class CommentTest < ActiveSupport::TestCase
   end
 
   test 'should be invalid without commenter' do
-    comment = Comment.new(body: 'No commenter', article: articles(:one))
+    comment = Comment.new(body: 'No commenter', commentable: articles(:one))
     assert_not comment.save
-    assert_includes comment.errors.full_messages, "Commenter can't be blank"
+    assert_includes comment.errors.full_messages, "Commenter must exist"
   end
 
   test 'should be invalid without body' do
-    comment = Comment.new(commenter: 'No body (Get it?)', article: articles(:one))
+    comment = Comment.new(commenter: users(:author), commentable: articles(:one))
     assert_not comment.save
     assert_includes comment.errors.full_messages, "Body can't be blank"
   end
 
-  test 'should be invalid without article' do
-    comment = Comment.new(commenter: 'Orphan', body: 'No article.')
+  test 'should be invalid without commentable' do
+    comment = Comment.new(commenter: users(:krugman), body: 'No commentable.')
     assert_not comment.save
-    assert_includes comment.errors.full_messages, "Article must exist"
+    assert_includes comment.errors.full_messages, "Commentable must exist"
   end
 
-
-  test 'commenter should have a minimum length of 1' do
-    @comment.commenter = ''
-    assert_not @comment.save
-    assert_includes @comment.errors.full_messages, 
-      "Commenter is too short (minimum is 1 character)"    
-  end
-
-  test 'commenter should have a maximum length of 255' do
-    @comment.commenter = 'q' * 256
-    assert_not @comment.save
-    assert_includes @comment.errors.full_messages, 
-      "Commenter is too long (maximum is 255 characters)"    
+  test 'commentable can be another comment' do
+    comment = comments(:two)
+    assert comment.save
   end
 
 end

@@ -1,26 +1,29 @@
 class CommentsController < ApplicationController
-  http_basic_authenticate_with name: 'stateless', password: 'code', only: [:destroy]
-  before_action :find_article
+  before_action :authenticate_user! 
+  before_action :find_commentable
+  
   def create
-    @comment = @article.comments.create(comment_params)
+    @comment = Comment.create(comment_params)
+    @comment.commenter = current_user
     flash[:notice] = 'Comment was successfully created.'
-    redirect_to @article      
+    redirect_to @comment      
   end
 
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
     flash[:notice] = 'Comment was successfully destroyed.'
-    redirect_to @article
+    redirect_to @commentable
   end
 
   private
   def comment_params
-    params.require(:comment).permit(:commenter, :body)
+    params.require(:comment).permit(:commentable_id, :commentable_type, :body)
   end
 
 
   def find_article
-    @article = Article.find(params[:article_id])
+    commentable_type = params[:commentable_type]
+    @commentable = commentable_type.constantize.find(params[:commentable_id])
   end  
 end
