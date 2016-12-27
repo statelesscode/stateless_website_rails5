@@ -6,8 +6,8 @@ application up and running.
 Things you may want to cover:
 
 ### Ruby version 
-  * Built on 2.3.1 
-  * Requires Ruby >= 2.2.0 (rails\_guide branch requires >= 2.3.0)
+  * Built on 2.4.0 
+  * Requires Ruby >= 2.3.0
 
 * System dependencies: TBD
 
