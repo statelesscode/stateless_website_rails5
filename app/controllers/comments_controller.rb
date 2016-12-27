@@ -1,7 +1,19 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user! 
-  before_action :find_commentable
+  before_action :find_commentable, only: [:create]
+  before_action :find_comment, only: [:show, :edit, :update, :destroy]
+
+  def index
+    @comments = Comment.all.order(created_at: :desc)
+  end
   
+  def show
+  end
+
+  def edit
+    @commentable = @comment.commentable
+  end
+
   def create    
     @comment = @commentable.comments.new(comment_params)
     @comment.commenter = current_user
@@ -13,8 +25,18 @@ class CommentsController < ApplicationController
     end      
   end
 
+  def update
+    if @comment.update(comment_params)    
+      flash[:notice] = 'Comment was successfully updated.'
+      redirect_to @comment
+    else
+      flash[:alert] = 'Comment was not updated due to errors.'
+      render :edit
+    end
+  end
+
   def destroy
-    @comment = Comment.find(params[:id])
+    @commentable = @comment.commentable
     @comment.destroy
     flash[:notice] = 'Comment was successfully destroyed.'
     redirect_to @commentable
@@ -23,6 +45,10 @@ class CommentsController < ApplicationController
   private
   def comment_params
     params.require(:comment).permit(:commentable_id, :commentable_type, :body)
+  end
+
+  def find_comment
+    @comment = Comment.find(params[:id])
   end
 
   def find_commentable
