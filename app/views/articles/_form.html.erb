@@ -20,6 +20,10 @@
     <%= f.text_area :body %>
   </p>
   <p>
+    <%= f.label :status %><br>
+    <%= f.select :status, Article::STATUSES %>
+  </p>  
+  <p>
     <%= f.submit %>
   </p>
 <% end %>

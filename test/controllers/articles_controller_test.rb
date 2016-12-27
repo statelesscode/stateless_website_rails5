@@ -32,7 +32,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_select 'h1', 'New Article'
     assert_select 'form'
-    assert_select 'form p', 3    
+    assert_select 'form p', 4    
   end
 
   test 'should not get new if unauthorized' do
@@ -46,7 +46,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_select 'h1', 'Edit Article'
     assert_select 'form'
-    assert_select 'form p', 3    
+    assert_select 'form p', 4    
   end  
 
   test 'should not get edit if unauthorized' do
@@ -58,7 +58,7 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     sign_in @user
     assert_difference('Article.count') do
       post articles_url, params: {article: {title: 'I am an article', 
-        body: "I'm asleep: #{'z'*1000}"}}
+        body: "I'm asleep: #{'z'*1000}", status: 'Draft'}}
     end
     assert_redirected_to article_path(Article.last)
     assert_equal 'Article was successfully created.', flash[:notice]
