@@ -1,14 +1,44 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>StatelessWebsite</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->  
+    <!-- Need to allow this to be customized on each page. -->
+    <title>Stateless Code</title>
     <%= csrf_meta_tags %>
+
+    <!-- Be sure to include meta description/author etc. along with Twitter/Facebook meta tags. -->
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_link_tag 'favicon.ico' %>
+    <%= favicon_link_tag 'mb-icon.png', rel: 'apple-touch-icon', type: 'image/png' %>
   </head>
 
-  <body>
-    <%= yield %>
+   <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xs-12"> 
+          <%= render 'layouts/application/navbar' %>   
+        </div>
+      </div>
+      <!-- Tempory hack get the Bootstrap working better -->
+      <div class="row clearfix">
+        <br><br><br>
+      </div>
+      <div class="row clearfix">
+        <div class="col-sm-3 col-md-2 sidebar clearfix application-sidebar">
+          <%= render 'layouts/application/sidebar' %>
+        </div>
+        <div class="col-sm-9 col-md-10 main clearfix">
+          <%= yield %>
+        </div>        
+      </div>
+      <div class="row clearfix">
+        <%= render 'layouts/application/footer' %>
+      </div>
+    </div>
   </body>
 </html>
