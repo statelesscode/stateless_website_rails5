@@ -1,8 +1,10 @@
 <nav class="navbar navbar-dark navbar-fixed-top bg-inverse">
-  <button type="button" class="navbar-toggler hidden-sm-up" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation"></button>
-  <%= link_to(image_tag("Stateless-Logo32.png", {alt: 'Stateless Code', class: 'img-responsive'}), root_path, class: 'navbar-brand') %>
+  <button type="button" class="navbar-toggler hidden-sm-up pull-left" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" aria-label="Toggle navigation"></button>
+  <%= link_to root_path, class: 'navbar-brand' do %>
+    <%= image_tag("Stateless-Logo32.png", {alt: 'Stateless Code', class: 'img-responsive'}) %> Stateless Code
+  <% end %>
   <div id="navbar">
-    <nav class="nav navbar-nav float-xs-left">
+    <nav class="nav navbar-nav hidden-xs-down float-sm-left">
       <a class="nav-item nav-link" href="#">Screencasts</a>
       <a class="nav-item nav-link" href="#">Podcasts</a>
       <%= link_to 'Articles', articles_path, class: 'nav-item nav-link' %>
@@ -11,7 +13,7 @@
       <a class="nav-item nav-link" href="#">Help</a>
     </nav>
     <!-- TODO: make this form work -->
-    <form class="float-xs-right">
+    <form class="float-sm-right">
       <input type="text" class="form-control" placeholder="Search...">
     </form>
   </div>

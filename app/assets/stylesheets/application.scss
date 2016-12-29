@@ -11,11 +11,29 @@
  * It is generally better to create a new file per style scope.
  *
  */
+$stateless-blue-darkest: #172bbe;
+$stateless-blue-dark: #4e60e0;
+$stateless-blue: #495df3;
+$stateless-blue-light: #d1d7ff;
+
 @import 'articles';
 @import 'comments';
 @import 'tether';
 @import 'bootstrap';
 
+.stateless-application-banner {
+  background-color: $stateless-blue;
+  padding-top: 6rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+
+}
+
+.tagline {
+  color: $stateless-blue-light;
+}
+
+
 .application-sidebar {
-  background-color: #ddd;
+  /* background-color: #ddd; */
 }
