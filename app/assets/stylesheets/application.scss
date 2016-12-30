@@ -11,10 +11,13 @@
  * It is generally better to create a new file per style scope.
  *
  */
-$stateless-blue-darkest: #172bbe;
-$stateless-blue-dark: #4e60e0;
+$stateless-blue-dark: #00129e;
 $stateless-blue: #495df3;
-$stateless-blue-light: #d1d7ff;
+$stateless-blue-light: #aab4ff;
+$stateless-gold-bright: #ffe100;
+$stateless-gold: #e6cb00;
+$stateless-seafoam: #add9be;
+$stateless-pink: #ff7369;
 
 @import 'articles';
 @import 'comments';
@@ -30,8 +33,13 @@ $stateless-blue-light: #d1d7ff;
 }
 
 .tagline {
-  color: $stateless-blue-light;
+  color: $stateless-seafoam;
 }
+
+.stateless-symbol {
+  padding-top: 5rem;
+  color: $stateless-gold;
+}  
 
 
 .application-sidebar {
