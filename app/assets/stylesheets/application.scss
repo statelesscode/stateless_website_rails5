@@ -18,6 +18,7 @@ $stateless-gold-bright: #ffe100;
 $stateless-gold: #e6cb00;
 $stateless-seafoam: #add9be;
 $stateless-pink: #ff7369;
+$off-white: #dedede;
 
 @import 'articles';
 @import 'comments';
@@ -53,6 +54,9 @@ $stateless-pink: #ff7369;
   }
 }  
 
+#mainBannerHeader {
+  color: $off-white;
+}
 
 .application-sidebar {
   /* background-color: #ddd; */
