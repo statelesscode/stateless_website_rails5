@@ -81,4 +81,10 @@ class ArticleTest < ActiveSupport::TestCase
     assert_equal false, Article.new.published?
   end
 
+  test 'truncate_body method returns expected value' do
+    assert_equal @article.body, @article.truncate_body
+    @article.update(body: "#{'Z' * 2000}")
+    assert_equal "#{@article.body[0...1500]}...", @article.truncate_body
+  end
+
 end

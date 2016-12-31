@@ -1,6 +1,7 @@
 class Article < ApplicationRecord
   # Constants
   STATUSES = ['Draft', 'Premium', 'Public']
+  TRUNCATION_LENGTH = 1500
 
   # Active Record Relationships
   has_many :comments, as: :commentable, dependent: :destroy
@@ -27,5 +28,14 @@ class Article < ApplicationRecord
     else
       false
     end
+  end
+
+  # Truncate body to 500 characters if appplicable
+  def truncate_body
+    if self.body.length > TRUNCATION_LENGTH
+      "#{self.body[0...TRUNCATION_LENGTH]}..."    
+    else
+      self.body
+    end  
   end
 end

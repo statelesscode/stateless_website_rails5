@@ -1,22 +1,20 @@
-<h1>Stateless Code Articles</h1>
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Body</th>
-    <th>Actions</th>
-  </tr>
-
-  <% @articles.each do |article| %>
-  <tr>
-    <td><%= article.title %></td>
-    <td><%= article.body%></td>
-    <td><%= link_to 'Show', article_path(article) %>, 
-    <%= link_to 'Edit', edit_article_path(article)%>,
-    <%= link_to 'Destroy', article_path(article), method: :delete, data: {confirm: 'Are you sure?'} %></td>
-  </tr>
-  <% end %>
-</table>
-
-<p><%= link_to 'New article', new_article_path %></p>
-<p><%= link_to 'Main site page', root_path %></p>
+<div class="row">    
+  <div class="content-card-container"> 
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="card card-block">
+          <h1 id="articlesIndexTitle" class="card-title display-4"><%= t "meta.articles_index.title" %></h1>
+          <h6 class="card-subtitle text-muted"><%= t "meta.articles_index.description" %></h6>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 index-container">
+        <%= render @articles %>        
+      </div>
+    </div>
+    <p><%= link_to 'New article', new_article_path %></p>
+    <p><%= link_to 'Main site page', root_path %></p>    
+  </div>
+</div>

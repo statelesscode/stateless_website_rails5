@@ -13,8 +13,10 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     sign_in @user
     get articles_url
     assert_response :success
-    assert_select 'h1', 'Stateless Code Articles'
-    assert_select 'tr', Article.all.count + 1
+    assert_select 'meta', name: 'description', content: 'From Ruby to Bitcoin to the Non-Aggression Principle to nullification, the Stateless Code Blog will make the time you spend here worth the opportunity cost.'
+    assert_select 'title', 'Stateless Code Blog'  
+    assert_select '#articlesIndexTitle', 'Stateless Code Blog'
+    assert_select '.stateless-article-partial-card', Article.all.count
   end
 
   test 'should get show' do

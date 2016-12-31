@@ -12,6 +12,7 @@ two:
   body: MyText
   topic: Ruby on Rails
   status: Premium
+  published_at: <%= Time.now %>
 
 theft:
   author: author
@@ -19,3 +20,4 @@ theft:
   body: The government doesn't have any resources that weren't stolen from others.
   topic: Libertarianism  
   status: Public
+  published_at: <%= Time.now %>

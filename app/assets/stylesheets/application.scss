@@ -25,6 +25,9 @@ $off-white: #dedede;
 @import 'tether';
 @import 'bootstrap';
 
+body {
+}
+
 .stateless-application-banner {
   background: $stateless-blue;
   /* For Safari 5.1 to 6.0 */
@@ -60,4 +63,14 @@ $off-white: #dedede;
 
 .application-sidebar {
   /* background-color: #ddd; */
+}
+
+.index-container {
+  padding: 2rem;
+  background-color: $stateless-blue-light;
+}
+
+.content-card-container {
+  padding: 2rem;
+  background-color: $stateless-blue-dark;
 }

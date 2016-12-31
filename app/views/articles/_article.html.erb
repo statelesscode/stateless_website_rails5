@@ -1,0 +1,19 @@
+<div class="card stateless-article-partial-card">
+  <div class="card-header">
+    <h3><%= link_to article.title, article_path(article) %></h3>
+    <h6 class="card-subtitle text-muted"><%= article.description %></h6>
+  </div>  
+  <div class="card-block">
+    <p class="card-text"><%= article.truncate_body %></p>
+    <%= truncated_button(article) %>
+  </div>
+  <div class="card-footer text-muted clearfix">
+    <div class="row">
+    <div class="col-md-4">Published: <%= article.published? ? l(article.published_at, format: :short) : '[Draft]' %></div>
+    <div class="col-md-4 text-md-center">By: <%= article.author %> </div>
+    <div class="col-md-4 text-md-right">
+      <%= link_to "#{article.comments.count} #{'comment'.pluralize(article.comments.count)}", article_path(article) %> 
+    </div>
+    </div>
+  </div>  
+</div>
