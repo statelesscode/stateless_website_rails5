@@ -47,6 +47,10 @@ $stateless-pink: #ff7369;
 .stateless-symbol {
   padding-top: 5rem;
   color: $stateless-gold;
+  a:link, a:active, a:hover, a:visited {
+    text-decoration: none;
+    color: $stateless-gold;
+  }
 }  
 
 
