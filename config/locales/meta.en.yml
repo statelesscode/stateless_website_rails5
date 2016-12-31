@@ -1,0 +1,18 @@
+en:
+  meta:
+    default:
+      title: 'Title missing. Add me in config/locales/meta.en.yml or place in view with content_for'
+      keywords: ''
+      description: ''
+    welcome_index:
+      title: Welcome to Stateless Code
+      keywords: 'ruby, rails, libertarianism, libertarian, anarchism, anarcho-capitalist, coding, screencasts, podcasts'
+      description: Stateless Code is a libertarian coding website that will have a better description later.     
+    articles_new:
+      title: Add a new blog post
+      keywords: ''
+      description: 'The page to add a new blog post for Stateless Code.'
+    articles_index:      
+      title: 'Stateless Code Blog'
+      keywords: 'ruby, rails, libertarianism, libertarian, anarchism, anarcho-capitalist'
+      description: 'The weblog for Stateless Code that will also have a better description later.'
