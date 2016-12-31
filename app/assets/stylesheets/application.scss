@@ -25,7 +25,15 @@ $stateless-pink: #ff7369;
 @import 'bootstrap';
 
 .stateless-application-banner {
-  background-color: $stateless-blue;
+  background: $stateless-blue;
+  /* For Safari 5.1 to 6.0 */
+  background: -webkit-linear-gradient(left top, $stateless-blue-light, $stateless-blue-dark);
+  /* For Opera 11.1 to 12.0 */ 
+  background: -o-linear-gradient(bottom right, $stateless-blue-light, $stateless-blue-dark); 
+  /* For Firefox 3.6 to 15 */
+  background: -moz-linear-gradient(bottom right, $stateless-blue-light, $stateless-blue-dark);
+  /* Standard syntax */ 
+  background: linear-gradient(to bottom right, $stateless-blue-light, $stateless-blue-dark);
   padding-top: 6rem;
   padding-bottom: 1rem;
   margin-bottom: 1rem;
