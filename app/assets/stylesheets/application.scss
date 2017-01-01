@@ -1,0 +1,71 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+$stateless-blue-dark: #00129e;
+$stateless-blue: #495df3;
+$stateless-blue-light: #aab4ff;
+$stateless-blue-gray: #f3f4fc;
+$stateless-gold-bright: #ffe100;
+$stateless-gold: #e6cb00;
+$stateless-seafoam: #add9be;
+$stateless-pink: #ff7369;
+$off-white: #dedede;
+
+@import 'articles';
+@import 'comments';
+@import 'tether';
+@import 'bootstrap';
+
+body {
+}
+
+.stateless-application-banner {
+  background: $stateless-blue;
+  /* For Safari 5.1 to 6.0 */
+  background: -webkit-linear-gradient(left top, $stateless-blue-light, $stateless-blue-dark);
+  /* For Opera 11.1 to 12.0 */ 
+  background: -o-linear-gradient(bottom right, $stateless-blue-light, $stateless-blue-dark); 
+  /* For Firefox 3.6 to 15 */
+  background: -moz-linear-gradient(bottom right, $stateless-blue-light, $stateless-blue-dark);
+  /* Standard syntax */ 
+  background: linear-gradient(to bottom right, $stateless-blue-light, $stateless-blue-dark);
+  padding-top: 6rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+
+}
+
+.tagline {
+  color: $stateless-seafoam;
+}
+
+.stateless-symbol {
+  padding-top: 5rem;
+  color: $stateless-gold;
+  a:link, a:active, a:hover, a:visited {
+    text-decoration: none;
+    color: $stateless-gold;
+  }
+}  
+
+#mainBannerHeader {
+  color: $off-white;
+}
+
+.application-sidebar {
+  /* background-color: #ddd; */
+}
+
+.content-card-container {
+  background-color: $stateless-blue-gray; 
+}

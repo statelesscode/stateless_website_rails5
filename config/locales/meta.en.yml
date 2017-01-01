@@ -1,0 +1,18 @@
+en:
+  meta:
+    default:
+      title: 'Title missing. Add me in config/locales/meta.en.yml or place in view with helper method.'
+      keywords: ''
+      description: ''
+    welcome_index:
+      title: Welcome to Stateless Code
+      keywords: 'ruby, Rails, Ruby on Rails, libertarianism, libertarian, anarchism, anarcho-capitalism, coding, screencasts, podcasts'
+      description: We believe we can create a future of peace and abundance through adaptive tech innovation that creates wealth faster than the state can plunder and destroy it. We are Stateless Code.  
+    articles_new:
+      title: Add a new Stateless blog post
+      keywords: 'stateless, code, blog, articles'
+      description: 'The page to add a new blog post for Stateless Code.'
+    articles_index:      
+      title: 'Stateless Code Blog'
+      keywords: 'ruby, rails, Ruby on Rails, libertarianism, libertarian, anarchism, anarcho-capitalism, articles, blog'
+      description: From Ruby to Bitcoin to the Non-Aggression Principle to nullification, the Stateless Code Blog will make the time you spend here worth the opportunity cost.

@@ -1,0 +1,20 @@
+<div class="card stateless-comment-partial-card">
+  <div class="card-header">
+    <!-- TODO: Update after improving user name display -->
+    <h5><%= comment.commenter.username %></h5>
+    <h6 class="card-subtitle text-muted"><%= l(comment.created_at, format: :short) %></h6>
+  </div>  
+  <div class="card-block">
+    <p class="card-text"><%= comment.body %></p>    
+  </div>
+  <% if comment.comments.any? %>
+    <div class="card card-inverse card-info text-xs-center">
+      <div class="card-block"><h5 class="card-title text-white"><%= "#{comment.comments.length} #{'reply'.pluralize(comment.comments.length)}" %></h5></div>
+    </div>
+    <!-- TODO: Indent comment replies -->
+    <%= render comment.comments %>
+  <% end %>
+  <div class="card-footer">
+    <%= link_to("Destroy #{comment.commentable.model_name == 'Comment' ? 'Reply' : 'Comment'}", [comment.commentable, comment], method: :delete, data: {confirm: 'Are you sure'})%>
+  </div>
+</div>

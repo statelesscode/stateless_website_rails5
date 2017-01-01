@@ -1,0 +1,36 @@
+require 'test_helper'
+
+class CommentTest < ActiveSupport::TestCase
+
+  def setup
+    @comment = comments(:one)
+  end
+  
+  test 'should be valid with title and text' do
+    assert comments(:one).save
+  end
+
+  test 'should be invalid without commenter' do
+    comment = Comment.new(body: 'No commenter', commentable: articles(:one))
+    assert_not comment.save
+    assert_includes comment.errors.full_messages, "Commenter must exist"
+  end
+
+  test 'should be invalid without body' do
+    comment = Comment.new(commenter: users(:author), commentable: articles(:one))
+    assert_not comment.save
+    assert_includes comment.errors.full_messages, "Body can't be blank"
+  end
+
+  test 'should be invalid without commentable' do
+    comment = Comment.new(commenter: users(:krugman), body: 'No commentable.')
+    assert_not comment.save
+    assert_includes comment.errors.full_messages, "Commentable must exist"
+  end
+
+  test 'commentable can be another comment' do
+    comment = comments(:two)
+    assert comment.save
+  end
+
+end

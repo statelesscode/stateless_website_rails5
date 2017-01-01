@@ -1,0 +1,12 @@
+<h1><%= @comment.commenter %></h1>
+<p><%= @comment.body %></p>
+
+<h2>Replies:</h2>
+<%= render @comment.comments %>
+
+<h2>Reply:</h2>
+<%= render 'form', commentable: @comment, comment: Comment.new, commentable_type: 'Comment', commentable_id: @comment.id %>
+
+<%= link_to 'Edit', edit_comment_path(@comment) %>
+<%= link_to 'Destroy', comment_path(@comment), method: :delete, data: {confirm: 'Are you sure?'} %>
+<%= link_to 'Back to Parent', @comment.commentable %>
