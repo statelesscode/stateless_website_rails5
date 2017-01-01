@@ -30,7 +30,7 @@
       <div class="row">
         <div class="stateless-application-banner">
           <div class="row">
-            <div class="col-md-3 col-xl-2 hidden-sm-down">
+            <div class="col-md-4 col-xl-3 hidden-sm-down">
               <span class="stateless-symbol align-middle">
                 <h1 class="display-1 stateless-symbol-text">
                 <%= link_to root_path do %>
@@ -39,7 +39,7 @@
                 </h1>
               </span>
             </div>
-            <div class="col-sm-11 offset-sm-1 offset-md-0 col-md-9 col-xl-10 stateless-application-text"> 
+            <div class="col-sm-11 offset-sm-1 offset-md-0 col-md-8 col-xl-9 stateless-application-text"> 
               <h1 id="mainBannerHeader" class="text-xs-center text-sm-left display-3">Stateless Code</h1>
               <h2 class="text-xs-center text-sm-left tagline">Where liberty and technology meet</h2>
             </div>
@@ -48,12 +48,15 @@
       </div>  
       <!-- Tempory hack get the Bootstrap working better -->
       <div class="row clearfix">
-        <div class="col-sm-9 col-md-10 float-sm-right main clearfix">
+        <div role="main" class="col-sm-8 col-md-9 col-lg-10 col-xl-8 push-sm-4 push-md-3 push-lg-2 main clearfix">
           <%= yield %>
-        </div>        
-        <div class="col-sm-3 col-md-2 float-sm-left sidebar clearfix application-sidebar">
+        </div>
+        <div role="complementary" class="col-sm-4 col-md-3 col-lg-2 pull-sm-8 pull-md-9 pull-lg-10 pull-xl-8 sidebar application-sidebar">
           <%= render 'layouts/application/sidebar' %>
         </div>
+        <div role="complementary" class="col-sm-4 col-md-3 col-lg-2 pull-sm-8 pull-md-9 pull-lg-10 pull-xl-0 sidebar application-sidebar">
+          <h2>Some other stuff</h2>
+        </div>        
       </div>
       <div class="row clearfix">
         <%= render 'layouts/application/footer' %>
