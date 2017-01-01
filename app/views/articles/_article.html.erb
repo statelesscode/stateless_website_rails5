@@ -9,11 +9,12 @@
   </div>
   <div class="card-footer text-muted clearfix">
     <div class="row">
-    <div class="col-md-4">Published: <%= article.published? ? l(article.published_at, format: :short) : '[Draft]' %></div>
-    <div class="col-md-4 text-md-center">By: <%= article.author %> </div>
-    <div class="col-md-4 text-md-right">
-      <%= link_to "#{article.comments.count} #{'comment'.pluralize(article.comments.count)}", article_path(article) %> 
-    </div>
+      <div class="col-md-4">Published: <%= article.published? ? l(article.published_at, format: :short) : "#{l(article.created_at, format: :short)} [Draft]" %></div>
+      <!-- TODO: Add user method to improve name options -->
+      <div class="col-md-4 text-md-center">By: <%= article.author.username %> </div>
+      <div class="col-md-4 text-md-right">
+        <%= link_to "#{article.comments.count} #{'comment'.pluralize(article.comments.count)}", article_path(article) %> 
+      </div>
     </div>
   </div>  
 </div>
