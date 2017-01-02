@@ -11,19 +11,12 @@
  * It is generally better to create a new file per style scope.
  *
  */
-$stateless-blue-dark: #00129e;
-$stateless-blue: #495df3;
-$stateless-blue-light: #aab4ff;
-$stateless-blue-gray: #f3f4fc;
-$stateless-gold-bright: #ffe100;
-$stateless-gold: #e6cb00;
-$stateless-seafoam: #add9be;
-$stateless-pink: #ff7369;
-$off-white: #dedede;
+
 
 @import 'articles';
 @import 'comments';
 @import 'tether';
+@import 'bootstrap_variables';
 @import 'bootstrap';
 
 body {
@@ -31,13 +24,13 @@ body {
 
 .stateless-application-banner {
   background: $stateless-blue;
-  /* For Safari 5.1 to 6.0 */
+  // For Safari 5.1 to 6.0
   background: -webkit-linear-gradient(left top, $stateless-blue-light, $stateless-blue-dark);
-  /* For Opera 11.1 to 12.0 */ 
+  // For Opera 11.1 to 12.0  
   background: -o-linear-gradient(bottom right, $stateless-blue-light, $stateless-blue-dark); 
-  /* For Firefox 3.6 to 15 */
+  // For Firefox 3.6 to 15
   background: -moz-linear-gradient(bottom right, $stateless-blue-light, $stateless-blue-dark);
-  /* Standard syntax */ 
+  // Standard syntax  
   background: linear-gradient(to bottom right, $stateless-blue-light, $stateless-blue-dark);
   padding-top: 6rem;
   padding-bottom: 1rem;
@@ -63,9 +56,9 @@ body {
 }
 
 .application-sidebar {
-  /* background-color: #ddd; */
+  // background-color: #ddd;
 }
 
 .content-card-container {
-  background-color: $stateless-blue-gray; 
+  background-color: $stateless-gold-muted; 
 }
