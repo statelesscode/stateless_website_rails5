@@ -47,14 +47,14 @@
         </div>        
         <div id="statelessArticleShowCommentHeaderCard" class="card">
           <div class="card-block">
-            <h3  class="card-title"><%= "#{@article.comments.count} #{'comment'.pluralize(@article.comments.count)}" %></h3>
+            <h3  class="card-title"><%= "#{@article.comments.length} #{'comment'.pluralize(@article.comments.length)}" %></h3>
           </div>
         </div>
-        <%= render @article.comments %>
+        <%= render @article.comments.where(parent_id: nil) %>
         <div id="statelessArticleShowNewComment" class="card col-xs-12">
           <h3 class="card-header"><%= @article.comments.any? ? 'Add a New Comment:' : 'Be the First to Comment:' %></h3>
           <div class="card-block">
-            <%= render 'comments/form', commentable: @article, comment: Comment.new, commentable_type: 'Article', commentable_id: @article.id %>
+            <%= render 'comments/form', commentable: @article, comment: Comment.new, commentable_type: 'Article', commentable_id: @article.id, parent_id: nil %>
           </div>
         </div>
         <%= link_to 'Edit', edit_article_path(@article), class: "btn btn-secondary" %>

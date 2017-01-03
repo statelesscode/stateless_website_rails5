@@ -27,6 +27,9 @@ gem 'jbuilder', '~> 2.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# use closure_tree for treelike structures(ex: Comments)
+gem 'closure_tree', '~> 6.2.0'
+
 # front end
 gem 'bootstrap', '>= 4.0.0.alpha5'
 gem 'autoprefixer-rails'

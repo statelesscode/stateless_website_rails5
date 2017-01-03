@@ -50,7 +50,7 @@ private
   end
 
   def find_article
-    @article = Article.find(params[:id])
+    @article = Article.includes(:author, {comments: :commenter}).find(params[:id])
   end
 
 end

@@ -28,9 +28,11 @@ class CommentTest < ActiveSupport::TestCase
     assert_includes comment.errors.full_messages, "Commentable must exist"
   end
 
-  test 'commentable can be another comment' do
-    comment = comments(:two)
-    assert comment.save
+  test 'can add child' do
+    comment = comments(:one)
+    child_comment = comment.add_child(Comment.new(commentable: articles(:one), commenter: users(:author), body: 'Add a child.'))
+    assert_equal child_comment.parent_id, comment.id
+    assert_includes comment.children, child_comment
   end
 
 end

@@ -1,7 +1,7 @@
 <h1>Edit Comment</h1>
 
-<%= render 'form', commentable: @commentable, comment: @comment, commentable_type: @commentable.class.to_s, commentable_id: @commentable.id %>
+<%= render 'form', commentable: @commentable, comment: @comment, commentable_type: @commentable.class.to_s, commentable_id: @commentable.id, parent_id: @comment.parent_id %>
 
 <%= link_to 'Cancel', comment_path(@comment) %>
 <%= link_to 'Destroy', comment_path(@comment), method: :delete, data: {confirm: 'Are you sure?'} %>
-<%= link_to 'Parent', @commentable %>
+<%= link_to "#{@comment.commentable_type}", @commentable %>
