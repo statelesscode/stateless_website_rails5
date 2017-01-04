@@ -18,6 +18,7 @@
 @import 'tether';
 @import 'bootstrap_variables';
 @import 'bootstrap';
+@import 'font-awesome';
 
 body {
 }
@@ -57,6 +58,11 @@ body {
 
 .application-sidebar {
   // background-color: #ddd;
+}
+
+.bottom-buttons {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .content-card-container {

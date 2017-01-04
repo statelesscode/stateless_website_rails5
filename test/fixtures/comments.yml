@@ -1,11 +1,12 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:  
+health:  
   commenter: public
   body: War is the health of the state.
   commentable: one (Article)
 
-two:
+cretin:
   commenter: krugman
   body: No, war stimulates the economy, you racist cretin!
   commentable: one (Article)
+  parent: health

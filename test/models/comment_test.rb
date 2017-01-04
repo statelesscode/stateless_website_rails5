@@ -3,11 +3,11 @@ require 'test_helper'
 class CommentTest < ActiveSupport::TestCase
 
   def setup
-    @comment = comments(:one)
+    @comment = comments(:health)
   end
   
   test 'should be valid with title and text' do
-    assert comments(:one).save
+    assert comments(:cretin).save
   end
 
   test 'should be invalid without commenter' do
@@ -29,7 +29,7 @@ class CommentTest < ActiveSupport::TestCase
   end
 
   test 'can add child' do
-    comment = comments(:one)
+    comment = comments(:health)
     child_comment = comment.add_child(Comment.new(commentable: articles(:one), commenter: users(:author), body: 'Add a child.'))
     assert_equal child_comment.parent_id, comment.id
     assert_includes comment.children, child_comment

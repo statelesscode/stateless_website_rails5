@@ -1,10 +1,10 @@
-<%= form_for([commentable, comment]) do |f| %>
-  <p>
+<%= form_for([commentable, comment]) do |f| %>  
     <%= f.hidden_field :parent_id, value: parent_id %>
-    <%= f.label :body %><br>
-    <%= f.text_area :body %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
+    <div class="form-group">
+      <%= f.label :body %><br>
+      <%= f.text_area :body, class: 'form-control', rows: 3 %>
+    </div>  
+    <%= f.button type: 'submit', class: 'btn btn-primary' do %>
+      Submit Comment
+    <% end %>
 <% end %>

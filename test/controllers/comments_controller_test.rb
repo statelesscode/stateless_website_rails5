@@ -6,7 +6,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
 
   def setup
     @article = articles(:one)
-    @comment = comments(:one)
+    @comment = comments(:health)
     @user = users(:public)
 
   end
@@ -31,7 +31,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_select 'h1', 'Edit Comment'
     assert_select 'form'
-    assert_select 'form p', 2    
+    assert_select 'form div', 1    
   end
 
   test 'should create comment from articles nested path' do

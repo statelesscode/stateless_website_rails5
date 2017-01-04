@@ -14,7 +14,15 @@
         <%= render @articles %>        
       </div>
     </div>
-    <%= link_to 'New article', new_article_path, class: 'btn btn-secondary' %>
-    <%= link_to 'Main site page', root_path, class: 'btn btn-secondary' %>    
+    <div class="row bottom-buttons">
+      <div class="col-xs-12 text-xs-center">
+        <%= link_to new_article_path, class: 'btn btn-primary' do %>
+          <%= fa_icon 'plus', text: 'New article' %>
+        <% end %>            
+        <%= link_to root_path, class: 'btn btn-primary' do %>
+          <%= fa_icon 'home', text: 'Main site page' %>
+        <% end %>
+      </div>
+    </div>        
   </div>
 </div>
