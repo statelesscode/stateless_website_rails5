@@ -1,7 +1,41 @@
-<h1>Edit Article</h1>
+<%= title "Edit #{@article.title}" %>
+<%= meta_description "Edit #{@article.title}. #{@article.description}" %>
+<%= meta_keywords (['edit'] << @article.keywords).flatten.join(',') %>
 
-<%= render 'form', article: @article %>
+<div class="row">    
+  <div class="content-card-container"> 
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="card card-block">
+          <h1 id="articlesEditTitle" class="card-title display-4"><%= "Edit #{@article.title}" %></h1>
+        </div>
+      </div>
+    </div>
 
-<%= link_to 'Cancel', article_path(@article) %>
-<%= link_to 'Destroy', article_path(@article), method: :delete, data: {confirm: 'Are you sure?'} %>
-<%= link_to 'Back to Articles', articles_path %>
+    <div class="row">
+      <div class="col-xs-12 col-md-10 offset-md-1 edit-container">
+        <div class="card stateless-article-partial-card">
+          <div class="card-block">
+            <div class="card-text">
+              <%= render 'form', article: @article %>
+            </div>          
+          </div>
+            
+        </div>        
+      </div>
+    </div>
+    <div class="row bottom-buttons">
+      <div class="col-xs-12 text-xs-center">
+        <%= link_to new_article_path, class: 'btn btn-primary' do %>
+          <%= fa_icon 'plus', text: 'New article' %>
+        <% end %>
+        <%= link_to article_path(@article), method: :delete, class: "btn btn-secondary", data: {confirm: 'Are you sure?'} do %>
+          <%= fa_icon 'remove', text: 'Destroy' %>    
+        <% end %>                            
+        <%= link_to root_path, class: 'btn btn-primary' do %>
+          <%= fa_icon 'home', text: 'Main site page' %>
+        <% end %>
+      </div>
+    </div>        
+  </div>
+</div>

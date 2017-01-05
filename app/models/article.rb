@@ -10,6 +10,9 @@ class Article < ApplicationRecord
   # Serialized Attributes
   serialize :keywords, Array
 
+  # Hooks
+  before_save :filter_and_sort_keywords
+
   # Validations
   validates :title, presence: true, length: {minimum: 3, maximum: 255}
   validates :body, presence: true
@@ -37,5 +40,10 @@ class Article < ApplicationRecord
     else
       self.body
     end  
+  end
+
+  private
+  def filter_and_sort_keywords
+    self.keywords = self.keywords.reject{|el| el.blank?}.sort
   end
 end

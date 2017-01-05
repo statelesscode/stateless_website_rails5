@@ -62,6 +62,13 @@ class ArticleTest < ActiveSupport::TestCase
     assert_includes article.errors.full_messages, "Status is not included in the list"    
   end
 
+  # Hooks
+  test 'should sort keywords and filter zero length or nil' do
+    @article.keywords = ['', 'zulu', 'bravo', nil, 'alpha', 'golf']
+    @article.save
+    assert_equal ['alpha', 'bravo', 'golf', 'zulu'], @article.keywords
+  end
+
   # Class Methods
 
   # this will change if you add a new fixture with a different topic

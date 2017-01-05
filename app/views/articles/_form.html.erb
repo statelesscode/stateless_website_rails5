@@ -11,19 +11,63 @@
       </ul>
   <% end %>
 
-  <p>
+  <div class="form-group">
     <%= f.label :title %> <br>
-    <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label :body %><br>
-    <%= f.text_area :body %>
-  </p>
-  <p>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :topic %> <br>
+    <%= f.text_field :topic, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description %> <br>
+    <%= f.text_field :description, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
     <%= f.label :status %><br>
-    <%= f.select :status, Article::STATUSES %>
-  </p>  
-  <p>
-    <%= f.submit %>
-  </p>
+    <%= f.select :status, Article::STATUSES, {}, {class: 'form-control'} %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :minified_link %> <br>
+    <%= f.text_field :minified_link, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :keywords %> <br>
+    <!-- probablly won't work for serialized array -->
+    <div class="row">
+      <% 12.times do |i=0| %>
+        <div class="col-xs-6 col-md-4 col-lg-3 col-xl-2">
+          <input id="article_keywords_<%= i %>" name="article[keywords][]" type="text" value="<%= article.keywords[i] %>" class="form-control" />
+        </div>
+      <% end %>  
+    </div>                    
+  </div>    
+
+  <div class="form-group">
+    <%= f.label :body %><br>
+    <%= f.text_area :body, class: 'form-control', rows: 15 %>
+  </div>
+
+
+  <div class="row">
+    <div class="col-xs-12 text-xs-center">
+      <%= f.button type: 'submit', class: 'btn btn-primary' do %>
+          <%= controller.action_name == 'edit' ? 'Update' : 'Create' %> Article
+      <% end %>
+      <% if controller.action_name == 'edit' %>
+        <%= link_to article_path(@article), class: "btn btn-secondary" do %>
+          Cancel    
+        <% end %>
+      <% else %>
+        <%= link_to articles_path, class: "btn btn-secondary" do %>
+          Cancel    
+        <% end %>    
+      <% end %>
+    </div>
+  </div>  
 <% end %>

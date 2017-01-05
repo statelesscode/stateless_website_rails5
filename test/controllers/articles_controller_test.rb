@@ -32,9 +32,11 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     sign_in @user
     get new_article_url
     assert_response :success
-    assert_select 'h1', 'New Article'
+    assert_select 'meta', name: 'description', content: 'The page to add a new blog post for Stateless Code.'
+    assert_select 'title', 'Add a new Stateless blog post'  
+    assert_select '#articlesNewTitle', 'Add a new Stateless blog post'
     assert_select 'form'
-    assert_select 'form p', 4    
+    assert_select 'form div', 22    
   end
 
   test 'should not get new if unauthorized' do
@@ -46,9 +48,11 @@ class ArticlesControllerTest < ActionDispatch::IntegrationTest
     sign_in @user
     get edit_article_url(@article)
     assert_response :success
-    assert_select 'h1', 'Edit Article'
+    assert_select 'meta', name: 'description', content: "Edit #{@article.title}. #{@article.description}"
+    assert_select 'title', "Edit #{@article.title}"  
+    assert_select '#articlesEditTitle', "Edit #{@article.title}"
     assert_select 'form'
-    assert_select 'form p', 4    
+    assert_select 'form div', 22    
   end  
 
   test 'should not get edit if unauthorized' do
