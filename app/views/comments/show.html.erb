@@ -1,12 +1,70 @@
-<h1><%= @comment.commenter %></h1>
-<p><%= @comment.body %></p>
+<%= title "Comment by #{@comment.commenter.username} on #{@comment.commentable.title}" %>
+<%= meta_description "Comment by #{@comment.commenter.username} on #{@comment.commentable.title}. #{@comment.commentable.description}"[0...200] %>
+<%= meta_keywords (['comments', @comment.commenter.username, @comment.commentable_type] << @comment.commentable.keywords).reject{|el| el.blank?}.uniq.join(',') %>
 
-<h2>Replies:</h2>
-<%= render @comment.children %>
+<div class="row">    
+  <div class="content-card-container"> 
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="card card-block">
+          <h1 id="CommentsShowTitle" class="card-title display-4">Comment by <%= @comment.commenter.username %> on <%= link_to @comment.commentable.title, @comment.commentable %></h1>
+        </div>
+      </div>
+    </div>
 
-<h2>Reply:</h2>
-<%= render 'form', commentable: @comment.commentable, comment: Comment.new, commentable_type: @comment.commentable_type, commentable_id: @comment.commentable_id, parent_id: @comment.id %>
-
-<%= link_to 'Edit', edit_comment_path(@comment) %>
-<%= link_to 'Destroy', comment_path(@comment), method: :delete, data: {confirm: 'Are you sure?'} %>
-<%= link_to "Back to #{@comment.commentable_type}", @comment.commentable %>
+    <div class="row">
+      <div class="col-xs-12 col-md-10 offset-md-1 individual-container">
+        <div id="statelessCommentShowCard" class="card">
+          <div class="card-header">
+            <div class="row">
+              <div class="col-md-4 text-md-left">
+                <!-- TODO: Add user method to improve name options -->
+                <h6 class="text-muted"><strong>By:</strong> <%= @comment.commenter.username %></h6>
+              </div>
+              <div class="col-md-4 text-md-right">  
+                <h6 class="text-muted text-xs-right"><strong>Posted:</strong> <%= l(@comment.created_at, format: :short)  %></h6>
+              </div>
+            </div>
+          </div>
+          <div class="card-block">
+            <div class="row">
+              <div class="col-md-10 offset-md-1">              
+                <p class="card-text"><%= @comment.body %></p>
+              </div>
+            </div>              
+          </div>
+        </div>        
+        <div id="statelessCommentShowReplyHeaderCard" class="card">
+          <div class="card-block">
+            <h3  class="card-title"><%= "#{@comment.children.length} #{'reply'.pluralize(@comment.children.length)}" %></h3>
+          </div>
+        </div>
+        <%= render @comment.children %>
+        <div class = "row">
+          <div class="col-xs-12">
+            <div id="statelessCommentShowNewReply" class="card card-outline-secondary col-xs-12">
+              <div class="card-block">
+                <h3 class="card-title">Add a Reply:</h3>
+                <%= render 'comments/form', commentable: @comment.commentable, comment: Comment.new, commentable_type: @comment.commentable_type, commentable_id: @comment.commentable_id, parent_id: @comment.id %>
+              </div>
+            </div>
+          </div>  
+        </div>
+        <div class="row bottom-buttons">
+          <div class="col-xs-12 text-xs-center">
+            <%= link_to edit_comment_path(@comment), class: "btn btn-primary" do %>
+              <%= fa_icon 'edit', text: 'Edit' %>
+            <% end %>
+            <%= link_to @comment.commentable, class: "btn btn-primary" do %>
+              <%= fa_icon 'circle-left', text: "Back to #{@comment.commentable_type}" %>    
+            <% end %>
+            <%= link_to comment_path(@comment), method: :delete, class: "btn btn-secondary", data: {confirm: 'Are you sure?'} do %>
+              <%= fa_icon 'remove', text: 'Destroy' %>
+            <% end %>  
+            <%= link_to 'Comment Feed', comments_path, class: "btn btn-secondary" %>
+          </div>  
+        </div>    
+      </div>  
+    </div>
+  </div>
+</div>

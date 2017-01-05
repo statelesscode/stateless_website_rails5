@@ -1,7 +1,41 @@
-<h1>Edit Comment</h1>
+<%= title "Edit Comment on #{@comment.commentable.title}" %>
+<%= meta_description "Edit Comment by #{@comment.commenter.username} on #{@comment.commentable.title}." %>
+<%= meta_keywords (['comments', 'edit', @comment.commenter.username, @comment.commentable_type] << @comment.commentable.keywords).reject{|el| el.blank?}.uniq.join(',') %>
 
-<%= render 'form', commentable: @commentable, comment: @comment, commentable_type: @commentable.class.to_s, commentable_id: @commentable.id, parent_id: @comment.parent_id %>
+<div class="row">    
+  <div class="content-card-container"> 
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="card card-block">
+          <h1 id="commentsEditTitle" class="card-title display-4"><%= "Edit Comment on #{@comment.commentable.title}" %></h1>
+        </div>
+      </div>
+    </div>
 
-<%= link_to 'Cancel', comment_path(@comment) %>
-<%= link_to 'Destroy', comment_path(@comment), method: :delete, data: {confirm: 'Are you sure?'} %>
-<%= link_to "#{@comment.commentable_type}", @commentable %>
+    <div class="row">
+      <div class="col-xs-12 col-md-10 offset-md-1 edit-container">
+        <div class="card stateless-comment-partial-card">
+          <div class="card-block">
+            <div class="card-text">
+              <%= render 'form', commentable: @commentable, comment: @comment, commentable_type: @commentable.class.to_s, commentable_id: @commentable.id, parent_id: @comment.parent_id %>
+            </div>          
+          </div>            
+        </div>        
+      </div>
+    </div>
+    <div class="row bottom-buttons">
+      <div class="col-xs-12 text-xs-center">
+        <%= link_to comment_path(@comment), class: "btn btn-primary" do %>
+          <%= fa_icon 'circle-left', text: 'Back to Comment' %>
+        <% end %>
+        <%= link_to @comment.commentable, class: "btn btn-primary" do %>
+          <%= fa_icon 'circle-left', text: "Back to #{@comment.commentable_type}" %>    
+        <% end %>
+        <%= link_to comment_path(@comment), method: :delete, class: "btn btn-secondary", data: {confirm: 'Are you sure?'} do %>
+          <%= fa_icon 'remove', text: 'Destroy' %>
+        <% end %>  
+        <%= link_to 'Comment Feed', comments_path, class: "btn btn-secondary" %>
+      </div>  
+    </div>
+  </div>    
+</div>

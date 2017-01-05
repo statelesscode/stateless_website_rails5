@@ -16,3 +16,7 @@ en:
       title: 'Stateless Code Blog'
       keywords: 'ruby, rails, Ruby on Rails, libertarianism, libertarian, anarchism, anarcho-capitalism, articles, blog'
       description: From Ruby to Bitcoin to the Non-Aggression Principle to nullification, the Stateless Code Blog will make the time you spend here worth the opportunity cost.
+    comments_index:
+      title: 'Stateless Code Comments'
+      keywords: 'stateless code, stateless, code, articles, blog, podcast, screencast, comments'
+      description: View the latest comments for the hottest topics on Stateless Code.      

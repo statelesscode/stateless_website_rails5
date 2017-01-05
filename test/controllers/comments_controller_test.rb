@@ -15,8 +15,10 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     sign_in @user
     get comments_url
     assert_response :success
-    assert_select 'h1', 'Stateless Code Comments'
-    assert_select 'tr', Comment.all.count + 1    
+    assert_select 'meta', name: 'description', content: 'View the latest comments for the hottest topics on Stateless Code.'
+    assert_select 'title', 'Stateless Code Comments'  
+    assert_select '#commentsIndexTitle', 'Stateless Code Comments'
+    assert_select '.stateless-comment-partial-card', Comment.all.count    
   end
 
   test 'should get show' do
@@ -29,7 +31,10 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     sign_in @user
     get edit_comment_url(@comment)
     assert_response :success
-    assert_select 'h1', 'Edit Comment'
+    assert_response :success
+    assert_select 'meta', name: 'description', content: "Edit Comment by #{@comment.commenter.username} on #{@comment.commentable.title}."
+    assert_select 'title', "Edit Comment on #{@comment.commentable.title}"  
+    assert_select '#commentsEditTitle', "Edit Comment on #{@comment.commentable.title}"
     assert_select 'form'
     assert_select 'form div', 1    
   end

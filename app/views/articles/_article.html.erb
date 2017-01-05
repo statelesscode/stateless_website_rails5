@@ -13,7 +13,7 @@
       <!-- TODO: Add user method to improve name options -->
       <div class="col-md-4 text-md-center">By: <%= article.author.username %> </div>
       <div class="col-md-4 text-md-right">
-        <%= link_to "#{article.comments.length} #{'comment'.pluralize(article.comments.length)}", article_path(article) %> 
+        <%= link_to "#{article.comments.length} #{'comment'.pluralize(article.comments.length)}", article_path(article, anchor: 'statelessArticleShowCommentHeaderCard') %> 
       </div>
     </div>
   </div>  

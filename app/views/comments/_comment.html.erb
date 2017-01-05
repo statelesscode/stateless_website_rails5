@@ -1,7 +1,10 @@
 <div class="row">
   <% 
     max_nesting = 6
-    if comment.depth > max_nesting
+    if controller.controller_name == 'comments'
+      div_grid_columns = 12
+      div_grid_offset = 0      
+    elsif comment.depth > max_nesting
       div_grid_columns = 12 - max_nesting
       div_grid_offset = max_nesting
     else
@@ -12,6 +15,9 @@
   <%= content_tag('div', class: "col-xs-#{div_grid_columns} offset-xs-#{div_grid_offset}") do %>
     <div class="card stateless-comment-partial-card %>">
       <div class="card-header">
+        <% if controller.controller_name == 'comments' && controller.action_name == 'index' %>
+          <h2>Comment by <%= comment.commenter.username %> on <%= link_to comment.commentable.title, comment.commentable %></h2> 
+        <% end %>
         <!-- TODO: Update after improving user name display -->
         <h5><%= comment.commenter.username %></h5>
         <h6 class="card-subtitle text-muted"><%= l(comment.created_at, format: :short) %></h6>
@@ -20,11 +26,22 @@
         <p class="card-text"><%= comment.body %></p>    
       </div>
       <div class="card-footer">
-        <%= link_to("Destroy #{comment.commentable.model_name == 'Comment' ? 'Reply' : 'Comment'}", [comment.commentable, comment], method: :delete, data: {confirm: 'Are you sure'})%>
+        <div class="row">
+          <div class="col-md-4">
+            <%= link_to "View Thread", comment_path(comment) %>
+          </div>
+          <!-- TODO: Add user method to improve name options -->
+          <div class="col-md-4 text-md-center">        
+            <%= link_to("Destroy #{comment.parent_id.nil? ? 'Comment' : 'Reply'}", [comment.commentable, comment], method: :delete, data: {confirm: 'Are you sure'})%>
+          </div>
+          <div class="col-md-4 text-md-right">
+            <%= link_to "#{comment.children.length} #{'reply'.pluralize(comment.children.length)}", comment_path(comment, anchor: 'statelessCommentShowReplyHeaderCard') %>
+          </div>
+        </div>  
       </div>
     </div>
     <% end %>
 </div>
-<% if comment.children.any? %>
+<% if comment.children.any? && controller.controller_name != 'comments' %>
   <%= render comment.children %>
 <% end %>
