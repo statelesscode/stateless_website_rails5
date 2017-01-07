@@ -20,28 +20,28 @@
     </ul>    
     <div class="clearfix hidden-md-up"></div>
     <!-- TODO: make this form work -->
-    <form class="form-inline float-md-right py-1 py-md-0">     
+    <form class="form-inline float-md-right my-2 my-md-0">     
       <input type="text" class="form-control mr-md-1" placeholder="Search...">
-      <button class="btn btn-inline btn-outline-success" type="submit">Search</button>
+      <button class="btn btn-inline btn-secondary mt-1 mt-md-0" type="submit">Search</button>
     </form>    
     <% if user_signed_in? %>
-      <form class="form-inline float-md-right py-1 py-md-0 mr-md-1">
+      <form class="form-inline float-md-right my-2 my-md-0 mr-md-2">
         <%= link_to user_path(current_user), class: 'btn btn-info' do %>
           <%= fa_icon 'user', text: 'Profile' %>
         <% end %>               
       </form>
-      <form class="form-inline float-md-right py-1 py-md-0 mr-md-1">
+      <form class="form-inline float-md-right my-2 my-md-0 mr-md-2">
         <%= link_to destroy_user_session_path, method: :delete, class: 'btn btn-outline-secondary nav-link float-xs-left float-md-right' do %>
           <%= fa_icon 'sign-out', text: 'Sign Out' %>
         <% end %>
       </form>                
     <% else %>
-      <form class="form-inline float-md-right py-1 py-md-0 mr-md-1">
+      <form class="form-inline float-md-right my-2 my-md-0 mr-md-2">
         <%= link_to new_user_session_path, class: 'btn btn-outline-info nav-link' do %>
           <%= fa_icon 'user', text: 'Login' %>
         <% end %>
       </form>
-      <form class="form-inline float-md-right py-1 py-md-0 mr-md-1">
+      <form class="form-inline float-md-right my-2 my-md-0 mr-md-2">
         <%= link_to new_user_session_path, class: 'btn btn-primary float-xs-left float-md-right' do %>
           Ⓐ Sign Up
         <% end %>

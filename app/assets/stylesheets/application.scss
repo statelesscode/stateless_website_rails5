@@ -16,8 +16,9 @@
 @import 'articles';
 @import 'comments';
 @import 'tether';
-@import 'bootstrap_variables';
 @import 'bootstrap';
+@import 'bootstrap_variables';
+@import 'spacing_alpha_temp';
 @import 'font-awesome';
 
 body {
@@ -75,19 +76,4 @@ body {
   background: -moz-linear-gradient(bottom right, $stateless-gold-muted, $stateless-gold-muted-darker);
   // Standard syntax  
   background: linear-gradient(to bottom right, $stateless-gold-muted, $stateless-gold-muted-darker);   
-}
-
-// FIXME: temporary hack for possible bug in Bootsrap 4 alpha 5 gem
-@media (min-width: 768px) {
-  .my-md-0 {
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-  }
-  .py-md-0 {
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-  }
-  .mr-md-1 {
-    margin-right: 0.25rem !important;
-  }
 }
