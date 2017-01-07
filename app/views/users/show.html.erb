@@ -1,0 +1,91 @@
+<%= title "Profile for #{@user.username}" %>
+<%= meta_description "The Stateless Code profile for #{@user.username}" %>
+<%= meta_keywords "stateless, code, users, #{@user.username}" %>
+
+<div class="row">    
+  <div class="content-card-container"> 
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="card card-block">
+          <h1 id="usersShowTitle" class="card-title display-4"><%= @user.username %>'s Profile</h1>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-md-10 offset-md-1 individual-container">
+        <div id="statelessUserShowCard" class="card">
+          <div class="card-header">
+            <div class="row">
+              <div class="col-md-4 text-md-left">
+                <!-- TODO: Add user method to improve name options -->
+                <h6 class="text-muted"><strong>Left:</strong></h6>
+              </div>
+              <div class="col-md-4 text-md-center">
+                <!-- TODO: Make topics linkable -->
+                <h6 class="text-muted text-xs-right text-md-center"><strong>Middle:</strong></h6>
+              </div>  
+              <div class="col-md-4 text-md-right">  
+                <h6 class="text-muted text-xs-right"><strong>Right:</strong></h6>
+              </div>
+            </div>
+          </div>
+          <div class="card-block">
+            <div class="row">
+              <div class="col-md-10 offset-md-1">
+                <dl class="row">
+                  <dt class="col-sm-5 col-xl-4">Username:</dt>
+                  <dd class="col-sm-7 col-xl-8"><%= @user.username %></dd>
+
+                  <dt class="col-sm-5 col-xl-4">Preferred Display Name:</dt>
+                  <dd class="col-sm-7 col-xl-8">To be implemented</dd>
+
+                  <dt class="col-sm-5 col-xl-4">Email Address:</dt>
+                  <dd class="col-sm-7 col-xl-8"><%= @user.email %></dd>                
+
+
+                  <dt class="col-sm-5 col-xl-4">Email Subscriber:</dt>                  
+                  <dd class="col-sm-7 col-xl-8">
+                    <% if @user.email_subscriber %> 
+                      true
+                    <% else %>
+                      Not Subcribed <%= link_to('Sign Up', email_subscribe_path(@user), method: :patch, class: "btn btn-sm btn-success") %>
+                    <% end %>
+                  </dd>
+
+                  <dt class="col-sm-5 col-xl-4">Role:</dt>
+                  <dd class="col-sm-7 col-xl-8"><%= @user.role %></dd>
+
+                  <dt class="col-sm-5 col-xl-4">Subscription Level:</dt>
+                  <dd class="col-sm-7 col-xl-8"><%= @user.subscription_class %></dd>
+
+                  <dt class="col-sm-5 col-xl-4">Class:</dt>
+                  <dd class="col-sm-7 col-xl-8"><%= @user.user_class %></dd>
+                  
+                  <dt class="col-sm-5 col-xl-4">Joined at:</dt>
+                  <dd class="col-sm-7 col-xl-8"><%= l(@user.created_at)%></dd>
+                </dl>
+              </div>
+            </div>              
+          </div>
+          <div class="card-footer text-muted clearfix">
+            <div class="row">
+              <!-- TODO: Make keywords linkable -->
+              <div class="col-md-12 text-md-center">Footer stuff</div>
+            </div>
+          </div>  
+        </div>        
+        <div class="row bottom-buttons">
+          <div class="col-xs-12 text-xs-center">
+            <%= link_to edit_user_path(@user), class: "btn btn-primary" do %>
+              <%= fa_icon 'edit', text: 'Edit Profile' %>
+            <% end %>
+            <!-- link to some Devise actions here -->
+
+            <%= link_to 'Back to Site Home', root_path, class: "btn btn-secondary" %>
+          </div>  
+        </div>    
+      </div>  
+    </div>
+  </div>
+</div>

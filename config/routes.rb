@@ -5,7 +5,10 @@ Rails.application.routes.draw do
     resources :comments
   end
 
-  resources :users
+  resources :users 
+
+  # email subscribe path to UsersController 
+  patch "users/:id/email_subscribe", to: "users#email_subscribe", as: :email_subscribe  
 
   # there should not be a create resource on the shallow route
   resources :comments, except: [:new, :create] do
