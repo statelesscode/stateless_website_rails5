@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  resources :users
+
   # there should not be a create resource on the shallow route
   resources :comments, except: [:new, :create] do
     resources :comments
