@@ -35,3 +35,15 @@ krugman:
   confirmed_at: <%= Time.now %>
   sign_in_count: 0
   failed_attempts: 0
+
+non_subscriber: 
+  username: nonsubscriber
+  role: Public
+  email_subscriber: false
+  subscription_class: Public
+  user_class: User
+  email: nonsubscriber@example.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, "NotSubscribing12345678") %>
+  confirmed_at: <%= Time.now %>
+  sign_in_count: 0
+  failed_attempts: 0

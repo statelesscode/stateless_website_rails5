@@ -47,7 +47,7 @@
                   <dt class="col-sm-5 col-xl-4">Email Subscriber:</dt>                  
                   <dd class="col-sm-7 col-xl-8">
                     <% if @user.email_subscriber %> 
-                      true
+                      Subscribed
                     <% else %>
                       Not Subcribed <%= link_to('Sign Up', email_subscribe_path(@user), method: :patch, class: "btn btn-sm btn-success") %>
                     <% end %>
