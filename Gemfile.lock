@@ -204,7 +204,7 @@ PLATFORMS
 
 DEPENDENCIES
   autoprefixer-rails
-  bootstrap (>= 4.0.0.alpha5)
+  bootstrap (= 4.0.0.alpha5)
   byebug
   closure_tree (~> 6.2.0)
   coffee-rails (~> 4.1.0)

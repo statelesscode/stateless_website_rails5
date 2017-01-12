@@ -31,7 +31,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'closure_tree', '~> 6.2.0'
 
 # front end
-gem 'bootstrap', '>= 4.0.0.alpha5'
+gem 'bootstrap', '= 4.0.0.alpha5'
 gem 'autoprefixer-rails'
 gem 'tether-rails'
 gem 'font-awesome-rails'
