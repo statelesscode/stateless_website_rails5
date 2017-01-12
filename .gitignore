@@ -22,3 +22,5 @@
 
 # Ignore precompiled public assets
 /public/assets/*
+# Ignore Paperclip data in public system
+/public/system/*

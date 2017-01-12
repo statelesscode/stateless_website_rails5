@@ -39,6 +39,7 @@ gem 'font-awesome-rails'
 # authentication
 gem 'devise', '~> 4.2.0'
 gem 'omniauth', '~> 1.3.1'
+gem 'cancancan', '~> 1.15.0'
 
 # Paperclip for avatar attachment
 gem 'paperclip', '~> 5.1.0'

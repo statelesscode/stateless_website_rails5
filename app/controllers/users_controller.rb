@@ -6,6 +6,19 @@ class UsersController < ApplicationController
 
   end
 
+  def edit
+
+  end
+
+  def update
+    if @user.update(user_params)    
+      flash[:notice] = 'User profile was successfully updated.'
+      redirect_to @user
+    else
+      flash[:alert] = 'User profile was not updated due to errors.'
+      render :edit
+    end    
+  end
 
   # other routes
   def email_subscribe
@@ -18,7 +31,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
-    params.require(:user).permit(:username)
+    params.require(:user).permit(:username, :avatar)
   end
 
   def find_user

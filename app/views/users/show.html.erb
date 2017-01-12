@@ -30,7 +30,7 @@
               </div>
             </div>
           </div>
-          <div class="card-block">
+          <div class="card-block">            
             <div class="row">
               <div class="col-md-10 offset-md-1">
                 <dl class="row">
@@ -65,6 +65,17 @@
                   <dt class="col-sm-5 col-xl-4">Joined at:</dt>
                   <dd class="col-sm-7 col-xl-8"><%= l(@user.created_at)%></dd>
                 </dl>
+              </div>
+            </div>
+            <div class='row'>
+              <div class="col-md-10 offset-md-1">
+                <h4>Avatar:</h4>
+                <%= image_tag(@user.avatar, {alt: "#{@user.username}'s Avatar", class: 'img-fluid'}) %>
+
+                <%= form_for @user, url: user_path(@user) do |f| %>
+                  <%= f.file_field :avatar %>
+                  <%= f.submit('Upload')%>
+                <% end %>
               </div>
             </div>              
           </div>
