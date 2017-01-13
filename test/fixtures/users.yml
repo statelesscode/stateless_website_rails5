@@ -1,49 +1,54 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-public: 
-  username: user123
-  role: Public
-  email_subscriber: true
-  subscription_class: Public
-  user_class: User
-  email: user123@example.com
-  encrypted_password: <%= Devise::Encryptor.digest(User, "justaguy12345678") %>
+DEFAULTS: &DEFAULTS
   confirmed_at: <%= Time.now %>
+  role: Public
+  subscription_class: Public
+  email_subscriber: true
   sign_in_count: 0
   failed_attempts: 0
-
+  user_class: User
+  encrypted_password: <%= Devise::Encryptor.digest(User, "justaguy12345678") %>
+  
+public: 
+  <<: *DEFAULTS
+  username: user123
+  email: user123@example.com
+  email_subscriber: false
+  user_class: Guest
+  
 author: 
+  <<: *DEFAULTS
   username: author123
   role: Author
-  email_subscriber: true
   subscription_class: Master
-  user_class: Elite
+  user_class: Legend
   email: author123@example.com
-  encrypted_password: <%= Devise::Encryptor.digest(User, "writer12345678") %>
-  confirmed_at: <%= Time.now %>
-  sign_in_count: 0
-  failed_attempts: 0
 
 krugman: 
+  <<: *DEFAULTS
   username: broken_window_kruggie
-  role: Public
-  email_subscriber: true
-  subscription_class: Public
-  user_class: User
+  role: Subscriber
   email: broken_window_kruggie@example.com
-  encrypted_password: <%= Devise::Encryptor.digest(User, "Keynes12345678") %>
-  confirmed_at: <%= Time.now %>
-  sign_in_count: 0
-  failed_attempts: 0
 
 non_subscriber: 
+  <<: *DEFAULTS
   username: nonsubscriber
   role: Public
   email_subscriber: false
-  subscription_class: Public
-  user_class: User
   email: nonsubscriber@example.com
-  encrypted_password: <%= Devise::Encryptor.digest(User, "NotSubscribing12345678") %>
-  confirmed_at: <%= Time.now %>
-  sign_in_count: 0
-  failed_attempts: 0
+
+admin:
+  <<: *DEFAULTS
+  username: stateless_code  
+  role: Admin
+  subscription_class: Master
+  email: admin@example.com
+  user_class: Staff
+
+moderator:
+  <<: *DEFAULTS
+  username: stateless_mod  
+  role: Moderator
+  subscription_class: Master
+  email: mod@example.com
+  user_class: Staff

@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 health:  
-  commenter: public
+  commenter: author
   body: War is the health of the state.
   commentable: one (Article)
 

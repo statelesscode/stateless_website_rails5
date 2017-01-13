@@ -1,5 +1,5 @@
 class ArticlesController < ApplicationController
-  before_action :authenticate_user! 
+  load_and_authorize_resource 
   before_action :find_article, only: [:show, :edit, :update, :destroy]
 
   def index 

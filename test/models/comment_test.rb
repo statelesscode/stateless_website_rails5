@@ -6,14 +6,13 @@ class CommentTest < ActiveSupport::TestCase
     @comment = comments(:health)
   end
   
-  test 'should be valid with title and text' do
+  test 'should be valid with title and body' do
     assert comments(:cretin).save
   end
 
-  test 'should be invalid without commenter' do
+  test 'should be valid without commenter' do
     comment = Comment.new(body: 'No commenter', commentable: articles(:one))
-    assert_not comment.save
-    assert_includes comment.errors.full_messages, "Commenter must exist"
+    assert comment.save
   end
 
   test 'should be invalid without body' do
@@ -25,7 +24,7 @@ class CommentTest < ActiveSupport::TestCase
   test 'should be invalid without commentable' do
     comment = Comment.new(commenter: users(:krugman), body: 'No commentable.')
     assert_not comment.save
-    assert_includes comment.errors.full_messages, "Commentable must exist"
+    assert_includes comment.errors.full_messages, "Commentable can't be blank"
   end
 
   test 'can add child' do

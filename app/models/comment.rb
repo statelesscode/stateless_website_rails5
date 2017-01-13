@@ -9,6 +9,8 @@ class Comment < ApplicationRecord
 
   # Validations
   validates :body, presence: true
+  validates :commentable, presence: true
+
 
   # Scopes 
 
