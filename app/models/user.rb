@@ -13,7 +13,7 @@ class User < ApplicationRecord
   # Active Record Relationships
   has_many :comments, class_name: 'Comment', foreign_key: 'commenter_user_id', dependent: :nullify
   has_many :articles, class_name: 'Article', foreign_key: 'author_user_id', dependent: :nullify
-  has_attached_file :avatar, styles: { medium: "400x400>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  has_attached_file :avatar, styles: { medium: "400x400>", small: "100x100>", thumb: "32x32>" }, default_url: "/images/:style/missing.png"
   
 
 
@@ -35,7 +35,7 @@ class User < ApplicationRecord
   # Validations
   validates_attachment :avatar, content_type: { content_type: ["image/jpeg", "image/gif", "image/png"] }, allow_nil: true, allow_blank: true
   validates_with AttachmentPresenceValidator, attributes: :avatar, allow_nil: true, allow_blank: true
-  validates_with AttachmentSizeValidator, attributes: :avatar, less_than: 1.megabytes 
+  validates_with AttachmentSizeValidator, attributes: :avatar, less_than: 500.kilobytes 
   validates :role, inclusion: {in: User.roles} 
   validates :role, inclusion: {in: User.roles} 
   validates :subscription_class, inclusion: {in: User.subscription_classes}

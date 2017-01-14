@@ -16,9 +16,11 @@
     </div>
     <div class="row bottom-buttons">
       <div class="col-xs-12 text-xs-center">
-        <%= link_to new_article_path, class: 'btn btn-primary' do %>
-          <%= fa_icon 'plus', text: 'New article' %>
-        <% end %>            
+        <% if can? :create, Article.new %>
+          <%= link_to new_article_path, class: 'btn btn-primary' do %>
+            <%= fa_icon 'plus', text: 'New article' %>
+          <% end %>
+        <% end %>
         <%= link_to root_path, class: 'btn btn-primary' do %>
           <%= fa_icon 'home', text: 'Main site page' %>
         <% end %>

@@ -19,7 +19,7 @@
           <h2>Comment by <%= comment.commenter.username %> on <%= link_to comment.commentable.title, comment.commentable %></h2> 
         <% end %>
         <!-- TODO: Update after improving user name display -->
-        <h5><%= comment.commenter.username %></h5>
+        <h5><%= image_tag comment.commenter.avatar.url(:thumb), alt: "#{comment.commenter.username}'s avatar", class: 'float-left' %> <%= comment.commenter.username %></h5>
         <h6 class="card-subtitle text-muted"><%= l(comment.created_at, format: :short) %></h6>
       </div>  
       <div class="card-block">
@@ -31,8 +31,10 @@
             <%= link_to "View Thread", comment_path(comment) %>
           </div>
           <!-- TODO: Add user method to improve name options -->
-          <div class="col-md-4 text-md-center">        
-            <%= link_to("Destroy #{comment.parent_id.nil? ? 'Comment' : 'Reply'}", [comment.commentable, comment], method: :delete, data: {confirm: 'Are you sure'})%>
+          <div class="col-md-4 text-md-center">
+            <% if can? :destroy, comment %>        
+              <%= link_to("Destroy #{comment.parent_id.nil? ? 'Comment' : 'Reply'}", [comment.commentable, comment], method: :delete, data: {confirm: 'Are you sure'})%>
+            <% end %>
           </div>
           <div class="col-md-4 text-md-right">
             <%= link_to "#{comment.children.length} #{'reply'.pluralize(comment.children.length)}", comment_path(comment, anchor: 'statelessCommentShowReplyHeaderCard') %>

@@ -1,6 +1,7 @@
 <div class="card stateless-article-partial-card">
   <div class="card-header">
-    <h3><%= link_to article.title, article_path(article) %></h3>
+  <!-- TODO: Article summary image or author's avatar. Replace username with preferred name -->
+    <h3><%= image_tag article.author.avatar.url(:thumb), alt: "#{article.author.username}'s avatar", class: 'float-left' %> <%= link_to article.title, article_path(article) %></h3>
     <h6 class="card-subtitle text-muted"><%= article.description %></h6>
   </div>  
   <div class="card-block">

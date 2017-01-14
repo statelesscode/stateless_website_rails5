@@ -7,7 +7,7 @@
     <div class="row">
       <div class="col-xs-12">
         <div class="card card-block">
-          <h1 id="CommentsShowTitle" class="card-title display-4">Comment by <%= @comment.commenter.username %> on <%= link_to @comment.commentable.title, @comment.commentable %></h1>
+          <h1 id="CommentsShowTitle" class="card-title display-4"><%= image_tag @comment.commenter.avatar.url(:small), alt: "#{@comment.commenter.username}'s avatar", class: 'float-left' %> Comment by <%= @comment.commenter.username %> on <%= link_to @comment.commentable.title, @comment.commentable %></h1>
         </div>
       </div>
     </div>
