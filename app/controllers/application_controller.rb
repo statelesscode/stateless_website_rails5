@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
       format.json { head :forbidden }
       format.html do
         if user_signed_in? 
-          redirect_to root_url, :alert => exception.message
+          redirect_to user_root_url, :alert => exception.message
         else
           redirect_to new_user_session_path, :alert => exception.message
         end
