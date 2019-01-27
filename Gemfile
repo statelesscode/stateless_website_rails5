@@ -31,7 +31,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'closure_tree', '~> 6.2.0'
 
 # front end
-gem 'bootstrap', '= 4.0.0.alpha5'
+gem 'bootstrap', '~> 4.2'
 gem 'autoprefixer-rails'
 gem 'tether-rails'
 gem 'font-awesome-rails'
@@ -42,7 +42,7 @@ gem 'omniauth', '~> 1.3.1'
 gem 'cancancan', '~> 1.15.0'
 
 # Paperclip for avatar attachment
-gem 'paperclip', '~> 5.1.0'
+gem 'paperclip', '~> 6.1.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
