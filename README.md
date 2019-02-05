@@ -5,8 +5,8 @@ application up and running.
 
 Things you may want to cover:
 
-### Ruby version 
-  * Built on 2.4.0 
+### Ruby version
+  * Built on 2.4.0
   * Requires Ruby >= 2.3.0
 
 * System dependencies: TBD
@@ -26,7 +26,7 @@ $ rails db:create
 ```
 $ rails db:migrate
 ```
- 
+
 or
 
 ```
@@ -57,7 +57,7 @@ $ rails test
   * Need to have show notes pages for audio/video content
   * Need to have ability to tag posts with keywords/categories
   * Need to have role-based access to tiered and/or premium content
-  * Need to have ability to get paid (fiat/bitcoin)  
+  * Need to have ability to get paid (fiat/bitcoin)
   * Need to have analytics to determine most profitable lines of business
     * Click, referral tracking, etc.
   * Need to have ability to serve targeted advertisements to Stateless Code or affiliate products
@@ -67,7 +67,7 @@ $ rails test
   * Need to have ability for users to sign up, sign in, confirm, unlock, etc.
   * Need to have ability for users to share content on Facebook, Twitter, etc.
   * Need to have ability to sell/serve ebooks
-  * Stateless chat for members
+  * Stateless chat for members (implement with ActionCable)
   * Forums for members
 
 
