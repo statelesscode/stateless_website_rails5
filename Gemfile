@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '>= 5.0.0', '< 5.1'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'sqlite3', '~> 1.3.6'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -31,14 +31,14 @@ gem 'jbuilder', '~> 2.0'
 gem 'closure_tree', '~> 6.2.0'
 
 # front end
-gem 'bootstrap', '~> 4.2'
+gem 'bootstrap', '~> 4.3.1'
 gem 'autoprefixer-rails'
 gem 'tether-rails'
 gem 'font-awesome-rails'
 
 # authentication
-gem 'devise', '~> 4.2.0'
-gem 'omniauth', '~> 1.3.1'
+gem 'devise', '~> 4.6.0'
+gem 'omniauth', '~> 1.9.0'
 gem 'cancancan', '~> 1.15.0'
 
 # Paperclip for avatar attachment
