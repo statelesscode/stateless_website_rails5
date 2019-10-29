@@ -37,7 +37,7 @@ gem 'tether-rails'
 gem 'font-awesome-rails'
 
 # authentication
-gem 'devise', '~> 4.6.0'
+gem 'devise', '~> 4.7.1'
 #gem 'omniauth', '~> 1.9.0' not used yet and deemed vulnerable
 gem 'cancancan', '~> 1.15.0'
 
