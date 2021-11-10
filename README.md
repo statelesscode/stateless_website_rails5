@@ -11,14 +11,14 @@ Things you may want to cover:
 
 * System dependencies: TBD
 
-* Configuration
+* Configuration \
   In order to get the application to run, you need to set the following environment variables:
-* $STATELESS\_DEV\_SECRET\_KEY\_BASE
-* $STATELESS\_DEVISE\_PEPPER\_DEV
-* $STATELESS\_TEST\_SECRET\_KEY\_BASE
-* $STATELESS\_DEVISE\_PEPPER\_TEST
-* $STATELESS\_PRD\_SECRET\_KEY\_BASE
-* $STATELESS\_DEVISE\_PEPPER\_PROD
+  * $STATELESS\_DEV\_SECRET\_KEY\_BASE
+  * $STATELESS\_DEVISE\_PEPPER\_DEV
+  * $STATELESS\_TEST\_SECRET\_KEY\_BASE
+  * $STATELESS\_DEVISE\_PEPPER\_TEST
+  * $STATELESS\_PRD\_SECRET\_KEY\_BASE
+  * $STATELESS\_DEVISE\_PEPPER\_PROD
 
 ### Database creation
 ```
